@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Zoom Infinity: Three Views, One Truth</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background: #f5f5f5;
+        }
+        
+        .container {
+            display: flex;
+            gap: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .left-panel, .right-panel {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        .left-panel {
+            flex: 2;
+        }
+        
+        .right-panel {
+            flex: 1;
+        }
+        
+        .expert-view {
+            margin-bottom: 25px;
+            padding: 15px;
+            border-left: 5px solid;
+            background: #f9f9f9;
+        }
+        
+        .architect {
+            border-left-color: #3498db;
+        }
+        
+        .clinician {
+            border-left-color: #2ecc71;
+        }
+        
+        .skeptic {
+            border-left-color: #e74c3c;
+        }
+        
+        .zoom-layer {
+            background: #ecf0f1;
+            padding: 8px;
+            margin: 5px 0;
+            border-radius: 4px;
+            font-family: monospace;
+        }
+        
+        .answer-btn {
+            display: block;
+            width: 100%;
+            padding: 12px;
+            margin: 8px 0;
+            border: 2px solid #ddd;
+            background: white;
+            text-align: left;
+            cursor: pointer;
+            border-radius: 6px;
+            transition: all 0.2s;
+        }
+        
+        .answer-btn:hover {
+            background: #f8f9fa;
+        }
+        
+        #feedback {
+            margin-top: 20px;
+            padding: 15px;
+            border-radius: 6px;
+            display: none;
+        }
+        
+        h1 {
+            color: #2c3e50;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        
+        h3 {
+            color: #34495e;
+            margin-top: 0;
+        }
+        
+        .correct {
+            background: #d4edda !important;
+            border-color: #c3e6cb !important;
+        }
+        
+        .incorrect {
+            background: #f8d7da !important;
+            border-color: #f5c6cb !important;
+        }
+    </style>
+</head>
+<body>
+    <h1>🔬 Zoom Infinity: Medical Pattern Recognition</h1>
+    <h3 style="text-align: center; color: #7f8c8d;">Three Views, One Truth • Learn • Test • Master</h3>
+    
+    <div class="container">
+        <!-- LEFT PANEL: THREE EXPERT VIEWS -->
+        <div class="left-panel">
+            <h2>Three Expert Perspectives</h2>
+            
+            <!-- ARCHITECT VIEW -->
+            <div class="expert-view architect">
+                <h3>🧱 ARCHITECT (Visual Pattern Recognition)</h3>
+                <p><strong>Pneumothorax Progression:</strong></p>
+                <div class="zoom-layer">Layer 1: Normal CXR → Clear lung fields</div>
+                <div class="zoom-layer">Layer 2: Subtle line → Deep sulcus sign visible</div>
+                <div class="zoom-layer">Layer 3: Collapse → Tension physiology evident</div>
+                <p><em>Visual pattern: White line (visceral pleura) with no vessels beyond</em></p>
+            </div>
+            
+            <!-- CLINICIAN VIEW -->
+            <div class="expert-view clinician">
+                <h3>⚕️ CLINICIAN (Clinical Application)</h3>
+                <p><strong>Key Clinical Points:</strong></p>
+                <ul>
+                    <li>90% miss rate in supine trauma patients</li>
+                    <li>Sudden onset pleuritic chest pain + dyspnea</li>
+                    <li>Tension signs: Hypotension, tracheal deviation, cyanosis</li>
+                    <li>Immediate needle decompression at 2nd intercostal space, midclavicular line</li>
+                </ul>
+            </div>
+            
+            <!-- SKEPTIC VIEW -->
+            <div class="expert-view skeptic">
+                <h3>🔍 SKEPTIC (Reality Check)</h3>
+                <p><strong>Common Pitfalls & Verifications:</strong></p>
+                <ul>
+                    <li>Skin folds mimic PTX → Repeat film or CT confirmation</li>
+                    <li>Bullous disease can appear similar → Check history for COPD</li>
+                    <li>Always assess for mediastinal shift → True tension emergency</li>
+                    <li>Supine films: Look for deep sulcus, not just apical lucency</li>
+                </ul>
+            </div>
+        </div>
+        
+        <!-- RIGHT PANEL: TEST YOURSELF -->
+        <div class="right-panel">
+            <h2>Test Your Understanding</h2>
+            <p><strong>Case:</strong> 22-year-old trauma patient with sudden dyspnea and hypotension. CXR shows deep sulcus sign.</p>
+            
+            <p><strong>Question:</strong> Which finding is MOST specific for tension pneumothorax?</p>
+            
+            <button class="answer-btn" onclick="checkAnswer('A')">A) Deep sulcus sign</button>
+            <button class="answer-btn" onclick="checkAnswer('B')">B) Tracheal deviation</button>
+            <button class="answer-btn" onclick="checkAnswer('C')">C) Subcutaneous emphysema</button>
+            <button class="answer-btn" onclick="checkAnswer('D')">D) Unilateral absent breath sounds</button>
+            
+            <div id="feedback"></div>
+            
+            <div style="margin-top: 30px; font-size: 0.9em; color: #666;">
+                <p><strong>Learning Tip:</strong> Compare Architect's visual pattern with Clinician's emergency signs, verified by Skeptic's pitfalls.</p>
+                <p><em>Reference: First Aid USMLE Step 1, p. 672</em></p>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        function checkAnswer(choice) {
+            const feedback = document.getElementById('feedback');
+            const buttons = document.querySelectorAll('.answer-btn');
+            
+            // Reset all buttons
+            buttons.forEach(btn => {
+                btn.classList.remove('correct', 'incorrect');
+            });
+            
+            // Highlight selected button
+            event.target.classList.add('incorrect');
+            
+            if(choice === 'B') {
+                // Correct answer
+                event.target.classList.remove('incorrect');
+                event.target.classList.add('correct');
+                feedback.innerHTML = `
+                    <div style="background: #d4edda; padding: 15px; border-radius: 6px; border-left: 5px solid #2ecc71;">
+                        <strong style="color: #155724;">✅ CORRECT: B. Tracheal Deviation</strong>
+                        <p style="margin: 10px 0 0 0; color: #155724;">
+                            <strong>Why:</strong> Mediastinal shift (tracheal deviation) is pathognomonic for tension PTX, indicating mass effect requiring immediate decompression.
+                        </p>
+                        <p style="margin: 5px 0 0 0; color: #155724;">
+                            Deep sulcus sign (A) is sensitive but not specific. SubQ air (C) and absent breath sounds (D) occur in both simple and tension PTX.
+                        </p>
+                    </div>
+                `;
+            } else {
+                // Wrong answer - show correct one
+                buttons.forEach(btn => {
+                    if(btn.textContent.includes('B)')) {
+                        btn.classList.add('correct');
+                    }
+                });
+                
+                feedback.innerHTML = `
+                    <div style="background: #f8d7da; padding: 15px; border-radius: 6px; border-left: 5px solid #e74c3c;">
+                        <strong style="color: #721c24;">❌ TRY AGAIN</strong>
+                        <p style="margin: 10px 0 0 0; color: #721c24;">
+                            Check the <strong>Skeptic view</strong>: That sign is suggestive but not pathognomonic for TENSION.
+                        </p>
+                        <p style="margin: 5px 0 0 0; color: #721c24;">
+                            <strong>Hint:</strong> Look for signs of mass effect requiring immediate intervention.
+                        </p>
+                    </div>
+                `;
+            }
+            
+            feedback.style.display = 'block';
+            
+            // Scroll to feedback
+            feedback.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        }
+    </script>
+    
+    <div style="text-align: center; margin-top: 40px; color: #7f8c8d; font-size: 0.9em;">
+        <p>Zoom Infinity: USMLE Visual Pattern Trainer • Built for Medical Education • $9.99 Full Version</p>
+        <p>© 2024 • Medical Graduate Built • No AI Hallucinations Guaranteed</p>
+    </div>
+</body>
+</html>
